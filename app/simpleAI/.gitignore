@@ -1,6 +1,0 @@
-*__pycache__/
-*.log
-*.cache
-*models.toml
-*dist/
-*vscode/

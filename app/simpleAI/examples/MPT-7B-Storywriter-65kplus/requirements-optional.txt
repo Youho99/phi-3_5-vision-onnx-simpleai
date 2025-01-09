@@ -1,3 +1,0 @@
-# You need CUDA available to build flash-attn
-flash-attn
-triton
