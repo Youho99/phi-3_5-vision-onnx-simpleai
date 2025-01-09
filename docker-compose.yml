@@ -1,0 +1,32 @@
+# version: '3.8'
+
+services:
+  app:
+    container_name: phi-3.5-vision-onnx-simpleai-api
+    build: 
+      context: .
+      dockerfile: VLM.Dockerfile
+    ports:
+      - "50051:50051"
+    image: phi-3.5-vision-onnx-simpleai-api:latest
+    entrypoint: ["python3", "server.py"]
+    command: ["--address", "[::]:50051"]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  serve_api:
+    container_name: phi-3.5-vision-serve-simpleai-api
+    build: 
+      context: .
+      dockerfile: API_SERVER.Dockerfile
+    image: phi-3.5-vision-serve-api:latest
+    ports:
+      - "10999:10999"
+    entrypoint: ["python3", "serve_api.py"]
+    depends_on:
+      - app
