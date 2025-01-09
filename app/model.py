@@ -8,8 +8,6 @@ from io import BytesIO
 from PIL import Image  # type: ignore
 import os
 import glob
-# import torch
-# import time
 
 
 SNAPSHOT_MODEL_PATH = "~/.cache/huggingface/hub/models--microsoft--Phi-3.5-vision-instruct-onnx/snapshots/"
@@ -26,11 +24,6 @@ def get_model_onnx_folder():
         latest_snapshot = snapshots[0]
 
         specific_folder = os.path.join(latest_snapshot, "gpu/gpu-int4-rtn-block-32")
-        
-        # if torch.cuda.is_available():
-        #     specific_folder = os.path.join(latest_snapshot, "gpu/gpu-int4-rtn-block-32")
-        # else:
-        #     specific_folder = os.path.join(latest_snapshot, "cpu_and_mobile/cpu-int4-rtn-block-32-acc-level-4")
         
         return specific_folder
     

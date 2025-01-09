@@ -1,5 +1,7 @@
 # Launch of the Phi-3.5-vision container
 
+>/!\ Only works with gpu!
+
 The Phi-3.5-vision container is the API used to chat with the Phi-3.5-vision VLM.
 This container is an implementation of Phi-3.5-vision-instruct-onnx, using the [ONNX Runtime generate() API](https://onnxruntime.ai/docs/genai/).
 This implementation is optimised so that the inference time is reduced.
